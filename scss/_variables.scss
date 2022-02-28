@@ -1,0 +1,221 @@
+//Color
+$primeryColor:rgba(148, 59, 24, 0.808);
+$active:rgba(255, 60, 0, 0.993);
+$border:rgb(243, 129, 36);
+$footer-border: #fff;
+$footer-icons-back:white;
+$foto-border:rgb(156, 132, 101);
+
+
+
+
+
+//mixin
+@mixin heading-main ($margin:30px 0,$font-size:28px) {
+    text-align: center;
+    font-size: $font-size;
+    color: $primeryColor;
+    margin: $margin;
+    &::after{
+        content: "";
+        width: em(100px);
+        display: block;
+        margin: 0 auto;
+        margin-top:em(5px) ;
+        border-bottom: 3px solid $border;
+    }
+}
+
+@mixin transition {
+    transition: all 0.5s ease-in-out;
+} 
+
+@mixin background-page{
+    width: 100vw;
+    height: 100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+     url(/images/pizza-3007395_1920.jpg);
+     background-position: center;
+     background-size: cover;
+     background-attachment: fixed;
+}
+
+@mixin reference-background {
+    width: 100%;
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+     url(/images/pizza-3007395_1920.jpg);
+     background-attachment: fixed;
+     background-position: center;
+     background-size: cover;
+}
+
+@mixin border($border:2px solid rgb(246, 116, 9)) {
+    border-bottom: $border;
+}
+
+//function
+@function em($pixel,$value:16px){
+    @return ($pixel/$value)  * 1em;
+}
+
+@function col-width($columns: 12,$page-widt: 100%,$gap: 0.01%){
+    @return ($page-widt - $gap * ($columns - 1 )) / $columns 
+};
+
+
+
+
+
+//Responzive designe
+
+//medium
+@mixin extralarge{
+    @media screen and (min-width:2500px){
+        @content;
+    }
+}
+
+@mixin large{
+    @media screen and (max-width:1400px){
+        @content;
+    }
+}
+@mixin medium {
+    @media screen and (max-width:1180px){
+        @content;
+    }
+}
+
+@mixin medium2 {
+    @media screen and (max-width:900px){
+        @content;
+    }
+}
+
+@mixin medium3 {
+    @media screen and (max-width:800px){
+        @content;
+    }
+}
+
+
+@mixin medium4{
+    @media screen and (max-width:785px){
+        @content;
+    }
+}
+
+@mixin small {
+    @media  screen and (max-width:730px){
+        @content;
+    }
+}
+
+@mixin mobile{
+    @media  screen and (max-width:480px){
+        @content;
+    }
+}
+@mixin mobile-extra-small {
+    @media  screen and (max-width:300px){
+        @content;
+    }
+}
+
+
+//footer
+
+.footer-discributed{
+    border-top: 2px solid $footer-border;
+    width: 100vw;
+    display: flex;
+    text-align: left;
+    padding:em(50px) em(55px) ;
+    background-color: rgb(10, 6, 6);
+    vertical-align: top; 
+    color: white;
+        
+    
+    &__left{
+        width:100%;
+       
+        h2{
+        font-size:em(80px);
+        font-weight: 650;
+            span{
+                color: $active;
+            }
+        }
+    
+        p{
+            font-size:em(14px) ;    
+        }
+    }
+        
+        //footer-center
+    &__center{
+        width: 100%;
+        
+        .contact-icon{     
+            margin-left: -10%;
+            
+            i{
+                display:inline-block;
+                background-color:  #33383b;
+                color: #ffffff;
+                font-size:em(15px) ;
+                width:em(40px) ;
+                height:em(40px) ;
+                border-radius: 50%;
+                text-align: center;
+                line-height:em(42px) ;
+                margin:em(10px)  em(15px) ;
+                vertical-align: middle;
+            }
+        }   
+
+        p{  
+            font-size:em(18px) ;
+            display: inline-block;
+    
+            a{
+                color: #fff;
+            }
+        }   
+    }
+    
+          //footer-right
+         &__right{
+             width: 38%;
+          
+           p{
+                line-height: 20px;
+                margin-bottom:em(10px);
+           }
+
+           .social-icons{
+            display: flex;
+            a{
+              color: #fff;
+              padding:em(10px);
+                 &:hover{
+                     background-color:$footer-icons-back;
+                    border-radius: 50%;
+                    &:nth-child(1){
+                        color: #1b46a3;
+                        
+                    }
+                    &:nth-child(2){  
+                        color:#033db9;
+                    }
+                    &:nth-child(3){ 
+                         color: rgb(223, 41, 72);
+                    }
+                    &:nth-child(4){  
+                         color: black;
+                    }
+                }
+            }
+        }
+    }
+}
